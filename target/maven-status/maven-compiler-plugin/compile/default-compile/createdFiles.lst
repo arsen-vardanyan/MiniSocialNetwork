@@ -1,0 +1,15 @@
+org\example\MiniSocialNetwork\manager\ArticleManager.class
+org\example\MiniSocialNetwork\Command.class
+org\example\MiniSocialNetwork\Main.class
+org\example\MiniSocialNetwork\models\Comment$CommentBuilder.class
+org\example\MiniSocialNetwork\models\Comment.class
+org\example\MiniSocialNetwork\Application.class
+org\example\MiniSocialNetwork\provider\DBConnectionProvider.class
+org\example\MiniSocialNetwork\models\User.class
+org\example\MiniSocialNetwork\util\Md5Util.class
+org\example\MiniSocialNetwork\manager\UserManager.class
+org\example\MiniSocialNetwork\enums\Gender.class
+org\example\MiniSocialNetwork\models\Article$ArticleBuilder.class
+org\example\MiniSocialNetwork\models\Article.class
+org\example\MiniSocialNetwork\manager\CommentManager.class
+org\example\MiniSocialNetwork\models\User$UserBuilder.class
