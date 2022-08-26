@@ -6,7 +6,6 @@ public class Main {
         Application application = new Application();
         application.start();
 
-
 //        UserManager userManager = new UserManager();
 //        User poxos = userManager.save(User.builder()
 //                .name("Poxos")

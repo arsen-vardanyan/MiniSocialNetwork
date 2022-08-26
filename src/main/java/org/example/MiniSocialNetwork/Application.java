@@ -33,9 +33,7 @@ public class Application {
                     normalCommand = true;
                     registration();
                 }
-                default -> {
-                    System.out.println("Pleas press only 1 or 2");
-                }
+                default -> System.err.println("Pleas press only 1 or 2");
             }
         }
 
@@ -51,11 +49,8 @@ public class Application {
             System.out.println("Press email");
             email = scanner.nextLine();
             emailCorrect = !userManager.existByEmail(email);
-            if (!emailCorrect) {
-                System.out.printf("User with email = %s already exists%n", email);
-            }
+            if (!emailCorrect) System.out.printf("User with email = %s already exists%n", email);
         }
-
 
         System.out.println("Press name");
         String name = scanner.nextLine();
@@ -91,7 +86,7 @@ public class Application {
 
     private void login() {
 
-        System.out.println("*** Login precess ***");
+        System.out.println("*** Login process ***");
         System.out.println("Press email");
 
         String email = scanner.nextLine();
@@ -103,7 +98,7 @@ public class Application {
             currentUser = byEmail;
             userHome();
         } else {
-            System.out.println("Wrong email or password");
+            System.err.println("Wrong email or password");
             start();
         }
 
@@ -130,9 +125,22 @@ public class Application {
                 }
                 case "4" -> {
                     normalCommand = true;
-                    logOut();
+                    boolean logOutCommand = false;
+                    while (!logOutCommand) {
+                        System.out.println("Do you really want out?\nPress 'y' for yes, and 'n' for no");
+                        String yesOrNo = scanner.nextLine();
+                        switch (yesOrNo) {
+                            case "y" -> {
+                                logOutCommand = true;
+                                System.out.println("Successfully logged out!");
+                                logOut();
+                            }
+                            case "n" -> userHome();
+                            default -> System.err.println("Press only 'y' or 'n'");
+                        }
+                    }
                 }
-                default -> System.out.println("Press only {1,2,3,4} numbers");
+                default -> System.err.println("Press only {1,2,3,4} numbers");
             }
         }
     }
@@ -150,18 +158,24 @@ public class Application {
             }
 
         }
+        if (all.size() == 0) {
+            System.out.println("Articles page is empty!");
+            userHome();
+        }
     }
 
     private void userArticles() { //todo
+        List<Article> articlesByAuthor = articleManager.articlesByAuthor(currentUser);
+        if (articlesByAuthor.size() == 0) System.out.println("Your articles page is empty!");
+        userHome();
     }
 
-    private void addArticle() {// todo
+    private void addArticle() { // todo
 
     }
 
     private void logOut() { //todo
-
+        start();
     }
-
 
 }

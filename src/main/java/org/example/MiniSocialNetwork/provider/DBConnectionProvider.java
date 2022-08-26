@@ -10,7 +10,7 @@ import java.util.Properties;
 public class DBConnectionProvider {
 
 
-    private  static  volatile DBConnectionProvider instance = new DBConnectionProvider();
+    private static volatile DBConnectionProvider instance = new DBConnectionProvider();
 
     private String driverName;
     private String dbUrl;
@@ -32,7 +32,7 @@ public class DBConnectionProvider {
 
     @SneakyThrows
     public Connection getConnection(){
-        if(connection==null || connection.isClosed()){
+        if(connection == null || connection.isClosed()) {
             connection = DriverManager.getConnection(dbUrl, username, password);
         }
         return connection;

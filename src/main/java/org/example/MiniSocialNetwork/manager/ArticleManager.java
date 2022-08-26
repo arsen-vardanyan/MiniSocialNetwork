@@ -5,10 +5,7 @@ import org.example.MiniSocialNetwork.models.Article;
 import org.example.MiniSocialNetwork.models.User;
 import org.example.MiniSocialNetwork.provider.DBConnectionProvider;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -18,6 +15,7 @@ public class ArticleManager {
     Logger logger = Logger.getLogger(UserManager.class.getName());
     private final Connection connection = DBConnectionProvider.getInstance().getConnection();
     private final CommentManager commentManager = new CommentManager();
+
     @SneakyThrows
     public Article save(Article article) {
         String sql = "insert into articles " +
@@ -36,7 +34,6 @@ public class ArticleManager {
         article.setId(userId);
         return article;
     }
-
 
     @SneakyThrows
     public List<Article> articlesByAuthor(User author) {
